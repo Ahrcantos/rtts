@@ -9,7 +9,7 @@ import (
 	"github.com/Ahrcantos/rtts/reddit"
 )
 
-func GenerateHtml(c *reddit.Comment, w io.Writer) {
+func GenerateCommentHtml(c *reddit.Comment, w io.Writer) {
 	temp, err := template.ParseFiles(filepath.FromSlash("styles/comment.html"))
 	if err != nil {
 		log.Fatal(err)
@@ -19,5 +19,4 @@ func GenerateHtml(c *reddit.Comment, w io.Writer) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 }
