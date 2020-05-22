@@ -5,6 +5,7 @@ import (
 )
 
 type Comment struct {
+	Id string `json:"id"`
 	Body string `json:"body"`
 	Ups int `json:"ups"`
 	Downs int `json:"downs"`
