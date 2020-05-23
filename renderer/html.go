@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"log"
 	"io"
+	"os"
 	"html/template"
 	"github.com/Ahrcantos/rtts/reddit"
 )
@@ -20,3 +21,13 @@ func GenerateCommentHtml(c *reddit.Comment, w io.Writer) {
 		log.Fatal(err)
 	}
 }
+
+func (rc RenderContext) WriteCommentHtml(c *reddit.Comment) {
+	path := filepath.Join(rc.BaseDir, c.Id, c.Id + ".html")
+	file, err := os.Create(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	GenerateCommentHtml(c, file)
+}
+
